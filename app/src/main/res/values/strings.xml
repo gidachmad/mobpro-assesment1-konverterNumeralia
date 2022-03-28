@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">Assesment1 - Konverter Numeralia</string>
+
+    <string name="intro">Aplikasi ini merupakan aplikasi converter sederhana yang akan mengeluarkan output dalam bentuk numeralia. </string>
+    <string name="contoh_1">contoh : 3</string>
+
+    <string name="hasil">Hasilnya adalah:</string>
+    <string name="hasil_x">Hasilnya adalah: %1$s</string>
+
+    <string name="invalid_bil">Tolong input angkanya dengan benar</string>
+    <string name="invalid_bil2">Tolong input angkanya dalam range yang benar</string>
+    <string name="belas">Belas</string>
+    <string name="button_konversi">Konversi</string>
+    <string name="puluh">puluh</string>
+
+    <string name="helper_bil">Masukan angka dalam range 0 sampai ke 99</string>
+
+    <string name="light_theme">Tema Terang</string>
+    <string name="dark_theme">Tema Gelap</string>
+
+</resources>
