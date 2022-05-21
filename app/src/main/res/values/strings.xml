@@ -9,11 +9,27 @@
 
     <string name="invalid_bil">Tolong input angkanya dengan benar</string>
     <string name="invalid_bil2">Tolong input angkanya dalam range yang benar</string>
-    <string name="belas">Belas</string>
     <string name="button_konversi">Konversi</string>
-    <string name="puluh">puluh</string>
 
-    <string name="helper_bil">Masukan angka dalam range 0 sampai ke 99</string>
+    <string name="error_msg">Maaf error, ada yang salah</string>
+
+    <string name="se">se</string>
+    <string name="nol">nol</string>
+    <string name="satu">satu</string>
+    <string name="dua">dua</string>
+    <string name="tiga">tiga</string>
+    <string name="empat">empat</string>
+    <string name="lima">lima</string>
+    <string name="enam">enam</string>
+    <string name="tujuh">tujuh</string>
+    <string name="delapan">delapan</string>
+    <string name="sembilan">sembilan</string>
+
+    <string name="belas">belas</string>
+    <string name="puluh">puluh</string>
+    <string name="ratus">ratus</string>
+
+    <string name="helper_bil">Masukan angka dalam range 0 sampai ke 999</string>
 
     <string name="light_theme">Tema Terang</string>
     <string name="dark_theme">Tema Gelap</string>

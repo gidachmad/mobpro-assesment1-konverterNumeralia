@@ -55,7 +55,7 @@ class MainActivity : AppCompatActivity() {
             8 -> return "delapan" + " " + getString(R.string.belas)
             9 -> return "sembilan" + " " + getString(R.string.belas)
         }
-        return "Maaf error, ada yang salah"
+        return getString(R.string.error_msg)
     }
 
     private fun convertPerAngka(bil1: Int, length: Int): String {
