@@ -36,13 +36,13 @@
 
     <string name="belum_ada_data">Belum ada data</string>
 
-    <string name="copyright">Hitung BMI merupakan sebuah aplikasi Android
-    untuk menghitung body mass index (BMI) sehingga seseorang dapat mengetahui apakah
-    berat badannya ideal, gemuk atau kurus.\n\nAplikasi ini dibuat untuk kelas
-    Mobpro 1. Temukan kodenya di
-        https://github.com/gidachmad/mobpro-assesment1-konverterNumeralia.git\n\n\nCopyright © 2021 Indra Azimi.\nAll rights reserved.  </string>
+    <string name="copyright">Konverter Numeralia ini merupakan aplikasi sederhana yang berfungsi mengeluarkan bentuk numeralia dari angka yang diinput
+        \n\nRepository Github: https://github.com/gidachmad/mobpro-assesment1-konverterNumeralia.git\n\n\nCopyright © 2022 Gid AAF.\nAll rights reserved.  </string>
 
 
+    <string name="tentang_aplikasi">Tentang Aplikasi</string>
+    <string name="histori">Histori</string>
+    <string name="hapus_histori">Hapus Histori</string>
 
 
     <!-- TODO: Remove or change this placeholder text -->
