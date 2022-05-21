@@ -28,8 +28,9 @@
     <string name="belas">belas</string>
     <string name="puluh">puluh</string>
     <string name="ratus">ratus</string>
+    <string name="ribu">ribu</string>
 
-    <string name="helper_bil">Masukan angka dalam range 0 sampai ke 999</string>
+    <string name="helper_bil">Masukan angka dalam range 0 sampai ke 9999</string>
 
     <string name="light_theme">Tema Terang</string>
     <string name="dark_theme">Tema Gelap</string>
