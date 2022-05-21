@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/app_navigation"
+    app:startDestination="@id/convertFragment">
+
+    <fragment
+        android:id="@+id/convertFragment"
+        android:name="org.d3if3061.assesment1.ui.convert.ConvertFragment"
+        android:label="fragment_convert"
+        tools:layout="@layout/fragment_convert" >
+        <action
+            android:id="@+id/action_convertFragment_to_tentangFragment"
+            app:destination="@id/tentangFragment" />
+        <action
+            android:id="@+id/action_convertFragment_to_historiFragment"
+            app:destination="@id/historiFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/historiFragment"
+        android:name="org.d3if3061.assesment1.ui.HistoriFragment"
+        android:label="fragment_histori"
+        tools:layout="@layout/fragment_histori" />
+    <fragment
+        android:id="@+id/tentangFragment"
+        android:name="org.d3if3061.assesment1.ui.TentangFragment"
+        android:label="fragment_tentang"
+        tools:layout="@layout/fragment_tentang" />
+</navigation>

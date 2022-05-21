@@ -3,7 +3,14 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Kerjaan/Android/assesment1/app/src/main/res/layout/activity_main.xml" value="0.22" />
+        <entry key="..\:/Kerjaan/Android/assesment1/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.2155" />
+        <entry key="..\:/Kerjaan/Android/assesment1/app/src/main/res/drawable/ic_launcher_background.xml" value="0.2155" />
+        <entry key="..\:/Kerjaan/Android/assesment1/app/src/main/res/drawable/rect_background.xml" value="0.2145" />
+        <entry key="..\:/Kerjaan/Android/assesment1/app/src/main/res/layout/activity_main.xml" value="0.25" />
+        <entry key="..\:/Kerjaan/Android/assesment1/app/src/main/res/layout/fragment_convert.xml" value="0.20018115942028986" />
+        <entry key="..\:/Kerjaan/Android/assesment1/app/src/main/res/layout/fragment_histori.xml" value="0.20018115942028986" />
+        <entry key="..\:/Kerjaan/Android/assesment1/app/src/main/res/layout/fragment_tentang.xml" value="0.20018115942028986" />
+        <entry key="..\:/Kerjaan/Android/assesment1/app/src/main/res/layout/item_history.xml" value="0.67" />
       </map>
     </option>
   </component>
