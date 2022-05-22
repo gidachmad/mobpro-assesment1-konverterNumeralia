@@ -1,11 +1,11 @@
 <resources>
-    <string name="app_name">Assesment1 - Konverter Numeralia</string>
+    <string name="app_name">Konverter Numeralia</string>
 
     <string name="intro">Aplikasi ini merupakan aplikasi converter sederhana yang akan mengeluarkan output dalam bentuk numeralia. </string>
-    <string name="contoh_1">contoh : 3</string>
+    <string name="contoh_1">min: 0, maks: 9999</string>
 
     <string name="hasil">Hasilnya adalah:</string>
-    <string name="hasil_x">Hasilnya adalah: %1$s</string>
+    <string name="hasil_x">Hasilnya adalah: \n\n %1$s</string>
 
     <string name="invalid_bil">Tolong input angkanya dengan benar</string>
     <string name="invalid_bil2">Tolong input angkanya dalam range yang benar</string>
@@ -30,23 +30,20 @@
     <string name="ratus">ratus</string>
     <string name="ribu">ribu</string>
 
-    <string name="helper_bil">Masukan angka dalam range 0 sampai ke 9999</string>
+    <string name="helper_bil">Masukan 4 digit angka untuk di konversi</string>
 
     <string name="light_theme">Tema Terang</string>
     <string name="dark_theme">Tema Gelap</string>
 
     <string name="belum_ada_data">Belum ada data</string>
 
-    <string name="copyright">Konverter Numeralia ini merupakan aplikasi sederhana yang berfungsi mengeluarkan bentuk numeralia dari angka yang diinput
+    <string name="copyright">Aplikasi ini merupakan aplikasi converter sederhana yang akan mengeluarkan output dalam bentuk numeralia.
+        \n\nAplikasi hanya dapat memproses input dengan range 0 - 9999, lebih tepatnya inputan 4 digit angka
         \n\nRepository Github: https://github.com/gidachmad/mobpro-assesment1-konverterNumeralia.git\n\n\nCopyright © 2022 Gid AAF.\nAll rights reserved.  </string>
 
 
     <string name="tentang_aplikasi">Tentang Aplikasi</string>
     <string name="histori">Histori</string>
     <string name="hapus_histori">Hapus Histori</string>
-
-
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>

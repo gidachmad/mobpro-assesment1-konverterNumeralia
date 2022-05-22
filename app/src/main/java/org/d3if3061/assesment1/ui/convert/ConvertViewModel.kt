@@ -1,89 +1,155 @@
 package org.d3if3061.assesment1.ui.convert
 
+import android.content.Context
+import android.content.res.Resources
+import android.os.Debug
+import android.util.Log
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import org.d3if3061.assesment1.R
 
 class ConvertViewModel: ViewModel() {
 
+    private val list = mutableListOf<Int>()
+    fun convertNumeralia(bil1: Int): MutableList<Int> {
+        val length = bil1.toString().length
+        when (length) {
+            1 -> convertSatuan(bil1)
+            2 -> convertPuluhan(bil1)
+            3 -> convertRatusan(bil1)
+            4 -> convertRibuan(bil1)
+            else -> convertBelasan(bil1)
+        }
+        val returningList = list.toMutableList()
+        list.clear()
 
-    //    private lateinit var binding : ActivityMainBinding
-//
-//    override fun onCreate(savedInstanceState: Bundle?) {
-//        super.onCreate(savedInstanceState)
-//
-//        binding = ActivityMainBinding.inflate(layoutInflater)
-//        setContentView(binding.root)
-//
-//        binding.submitButton.setOnClickListener{ convert() }
-//    }
-//
-//    private fun convert() {
-//        var hasilString = ""
-//        val bil1 = binding.input1.text.toString()
-//        if (TextUtils.isEmpty(bil1)){
-//            Toast.makeText(this, R.string.invalid_bil, Toast.LENGTH_LONG).show()
-//        }else if(bil1.length > 2){
-//            Toast.makeText(this, R.string.invalid_bil2, Toast.LENGTH_LONG).show()
-//        }else {
-//            hasilString = convertAngkaKeKata(bil1.toInt())
-//        }
-//
-//        binding.hasil.text = getString(R.string.hasil_x, hasilString.replaceFirstChar(Char::titlecase) )
-//    }
-//
-//    private fun convertAngkaKeKata(bil1: Int): String {
-//        val length = bil1.toString().length
-//        val stringRes = when{
-//            bil1 == 10 -> getString(R.string.se) + getString(R.string.puluh)
-//            bil1 < 11 -> convertPerAngka(bil1, length)
-//            bil1 > 19 -> convertPerAngka(bil1, length)
-//            else -> convertBelasan(bil1)
-//        }
-//        return stringRes
-//    }
-//
-//    private fun convertBelasan(bil1: Int): String {
-//        when(bil1%10){
-//            1 -> return getString(R.string.se) + " " + getString(R.string.belas)
-//            2 -> return getString(R.string.dua) + " " + getString(R.string.belas)
-//            3 -> return getString(R.string.tiga) + " " + getString(R.string.belas)
-//            4 -> return getString(R.string.empat) + " " + getString(R.string.belas)
-//            5 -> return getString(R.string.lima) + " " + getString(R.string.belas)
-//            6 -> return getString(R.string.enam) + " " + getString(R.string.belas)
-//            7 -> return getString(R.string.tujuh) + " " + getString(R.string.belas)
-//            8 -> return getString(R.string.delapan) + " " + getString(R.string.belas)
-//            9 -> return getString(R.string.sembilan) + " " + getString(R.string.belas)
-//        }
-//        return getString(R.string.error_msg)
-//    }
-//
-//    private fun convertPerAngka(bil1: Int, length: Int): String {
-//        var stringRes = ""
-//        if ( length == 1 ){
-//            stringRes = convertSatuan(bil1)
-//        }else if ( length == 2){
-//            if ( (bil1 % 10) == 0 ){
-//                stringRes = convertSatuan(bil1/10) + " " + getString(R.string.puluh)
-//            }else {
-//                stringRes = convertSatuan(bil1/10) + " " + getString(R.string.puluh) + " " + convertSatuan(bil1%10)
-//            }
-//        }
-//        return stringRes
-//    }
-//
-//    private fun convertSatuan(bil1: Int): String{
-//        when(bil1){
-//            0 -> return getString(R.string.nol)
-//            1 -> return getString(R.string.satu)
-//            2 -> return getString(R.string.dua)
-//            3 -> return getString(R.string.tiga)
-//            4 -> return getString(R.string.empat)
-//            5 -> return getString(R.string.lima)
-//            6 -> return getString(R.string.enam)
-//            7 -> return getString(R.string.tujuh)
-//            8 -> return getString(R.string.delapan)
-//            9 -> return getString(R.string.sembilan)
-//        }
-//        return getString(R.string.error_msg)
-//    }
+        return returningList
+    }
+
+    private fun convertSatuan(bil1: Int){
+        when(bil1){
+            0 -> list.add(R.string.nol)
+            1 -> list.add(R.string.satu)
+            2 -> list.add(R.string.dua)
+            3 -> list.add(R.string.tiga)
+            4 -> list.add(R.string.empat)
+            5 -> list.add(R.string.lima)
+            6 -> list.add(R.string.enam)
+            7 -> list.add(R.string.tujuh)
+            8 -> list.add(R.string.delapan)
+            9 -> list.add(R.string.sembilan)
+        }
+        //return list.add(R.string.error_msg)
+    }
+
+    private fun convertBelasan(bil1: Int) {
+        when(bil1%10){
+            1 -> list.addAll(listOf(R.string.se, R.string.belas))
+            2 -> list.addAll(listOf(R.string.dua, R.string.belas))
+            3 -> list.addAll(listOf(R.string.tiga, R.string.belas))
+            4 -> list.addAll(listOf(R.string.empat, R.string.belas))
+            5 -> list.addAll(listOf(R.string.lima, R.string.belas))
+            6 -> list.addAll(listOf(R.string.enam, R.string.belas))
+            7 -> list.addAll(listOf(R.string.tujuh, R.string.belas))
+            8 -> list.addAll(listOf(R.string.delapan, R.string.belas))
+            9 -> list.addAll(listOf(R.string.sembilan, R.string.belas))
+        }
+        //return list.add(R.string.error_msg)
+    }
+
+    private fun convertPuluhan(bil1: Int){
+        when{
+            // jika sepuluh
+            bil1 == 10 -> list.addAll(listOf(R.string.se, R.string.puluh))
+
+            // jika dibawah sepuluh
+            bil1 < 10 -> convertSatuan(bil1)
+
+            // jika di bukan belasan
+            bil1 > 19 ->
+                if (bil1 % 10 == 0){
+                    convertSatuan(bil1/10)
+                    list.add(R.string.puluh)
+                }else {
+                    convertSatuan(bil1 / 10)
+                    list.add(R.string.puluh)
+                    convertSatuan(bil1 % 10)
+                }
+
+            // jika belasan
+            else -> convertBelasan(bil1)
+        }
+    }
+
+    private fun convertRatusan(bil1: Int){
+        when{
+            // jika seratus
+            bil1 == 100 -> list.addAll(listOf(R.string.se, R.string.ratus))
+
+            // jika digit ke dua dan ketiga nol
+            bil1 % 100 == 0 -> {
+                convertSatuan(bil1/100)
+                list.add(R.string.ratus)
+            }
+
+            // jika di range 100 < bil < 120, bilangan belasan dalam range seratus
+            bil1 < 120 -> {
+                list.addAll(listOf(R.string.se, R.string.ratus))
+                convertBelasan(bil1%100)
+            }
+
+            // jika di range lainnya
+            bil1 > 199 -> {
+                convertSatuan(bil1 / 100)
+                list.add(R.string.ratus)
+                convertPuluhan(bil1 % 100)
+            }
+
+            // jika di range 120 < bil < 199
+            else -> {
+                list.addAll(listOf(R.string.se, R.string.ratus))
+                convertPuluhan(bil1 % 100)
+            }
+        }
+    }
+
+    private fun convertRibuan(bil1: Int){
+        when{
+            // jika seribu
+            bil1 == 1000 -> list.addAll(listOf(R.string.se, R.string.ribu))
+
+            // jika digit ke dua, ketiga, dan keempat nol
+            bil1 % 1000 == 0 -> {
+                convertSatuan(bil1/1000)
+                list.add(R.string.ribu)
+            }
+
+            // jika digit kedua adalah nol dan di range 1000
+            ((bil1/100)%10) == 0 && bil1/1000 == 1 -> {
+                list.addAll(listOf(R.string.se, R.string.ribu))
+                convertPuluhan(bil1%100)
+            }
+
+            // jika digit kedua adalah nol bukan di range 1000
+            ((bil1/100)%10) == 0 -> {
+                convertSatuan(bil1 / 1000)
+                list.add(R.string.ribu)
+                convertPuluhan(bil1%100)
+            }
+
+            // jika di range 1000
+            bil1 < 2000 -> {
+                list.addAll(listOf(R.string.se, R.string.ribu))
+                convertRatusan(bil1 % 1000)
+            }
+
+            // jika di range lainnya
+            else -> {
+                convertSatuan(bil1 / 1000)
+                list.add(R.string.ribu)
+                convertRatusan(bil1 % 1000)
+            }
+        }
+    }
 
 }

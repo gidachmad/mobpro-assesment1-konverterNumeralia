@@ -2,8 +2,6 @@ package org.d3if3061.assesment1
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.text.TextUtils
-import android.widget.Toast
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import androidx.navigation.ui.NavigationUI
@@ -15,12 +13,12 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-//        navController = findNavController(R.id.myNavHostFragment)
-//        NavigationUI.setupActionBarWithNavController(this, navController)
+        navController = findNavController(R.id.myNavHostFragment)
+        NavigationUI.setupActionBarWithNavController(this, navController)
     }
 
-//    override fun onSupportNavigateUp(): Boolean {
-//        return navController.navigateUp()
-//    }
+    override fun onSupportNavigateUp(): Boolean {
+        return navController.navigateUp()
+    }
 
 }
