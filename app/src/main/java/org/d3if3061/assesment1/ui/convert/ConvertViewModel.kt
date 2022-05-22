@@ -1,30 +1,27 @@
 package org.d3if3061.assesment1.ui.convert
 
-import android.content.Context
-import android.content.res.Resources
-import android.os.Debug
-import android.util.Log
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import org.d3if3061.assesment1.R
 
 class ConvertViewModel: ViewModel() {
-
     private val list = mutableListOf<Int>()
-    fun convertNumeralia(bil1: Int): MutableList<Int> {
-        val length = bil1.toString().length
-        when (length) {
+    private var returningList = MutableLiveData<MutableList<Int>>()
+
+    fun convertNumeralia(bil1: Int) {
+        when (bil1.toString().length) {
             1 -> convertSatuan(bil1)
             2 -> convertPuluhan(bil1)
             3 -> convertRatusan(bil1)
             4 -> convertRibuan(bil1)
             else -> convertBelasan(bil1)
         }
-        val returningList = list.toMutableList()
+        returningList.value = list.toMutableList()
         list.clear()
-
-        return returningList
     }
+
+    fun getReturninglist() : LiveData<MutableList<Int>> = returningList
 
     private fun convertSatuan(bil1: Int){
         when(bil1){
@@ -38,8 +35,8 @@ class ConvertViewModel: ViewModel() {
             7 -> list.add(R.string.tujuh)
             8 -> list.add(R.string.delapan)
             9 -> list.add(R.string.sembilan)
+            else -> list.add(R.string.error_msg)
         }
-        //return list.add(R.string.error_msg)
     }
 
     private fun convertBelasan(bil1: Int) {
@@ -53,8 +50,8 @@ class ConvertViewModel: ViewModel() {
             7 -> list.addAll(listOf(R.string.tujuh, R.string.belas))
             8 -> list.addAll(listOf(R.string.delapan, R.string.belas))
             9 -> list.addAll(listOf(R.string.sembilan, R.string.belas))
+            else -> list.add(R.string.error_msg)
         }
-        //return list.add(R.string.error_msg)
     }
 
     private fun convertPuluhan(bil1: Int){

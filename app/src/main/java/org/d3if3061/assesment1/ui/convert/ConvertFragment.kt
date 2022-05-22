@@ -2,7 +2,6 @@ package org.d3if3061.assesment1.ui.convert
 
 import android.os.Bundle
 import android.text.TextUtils
-import android.util.Log
 import android.view.*
 import androidx.fragment.app.Fragment
 import android.widget.Toast
@@ -45,10 +44,11 @@ class ConvertFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         binding.submitButton.setOnClickListener{ convert() }
+
+        viewModel.getReturninglist().observe(viewLifecycleOwner, { translateListtoString(it) })
     }
 
     private fun convert() {
-        var hasilString = ""
         val bil1 = binding.input1.text.toString()
         when {
             // jika input kosong
@@ -57,19 +57,17 @@ class ConvertFragment : Fragment() {
             // jika input tidak sesuai range yang dapat dikonversi
             bil1.length > 4 -> Toast.makeText(context, R.string.invalid_bil2, Toast.LENGTH_LONG).show()
 
-            // jika input sesuai range
-            else -> hasilString = translateListtoString( viewModel.convertNumeralia(bil1.toInt()) )
+            // jika input sesuai
+            else -> viewModel.convertNumeralia(bil1.toInt())
         }
-        binding.hasil.text = getString(R.string.hasil_x, hasilString.replaceFirstChar(Char::titlecase) )
     }
 
-    private fun translateListtoString(list : List<Int>): String{
+    private fun translateListtoString(list : MutableList<Int>){
         var stringRes = ""
         for (indeks in list){
-            if (indeks == R.string.se) stringRes += getString(indeks)
-            else stringRes += getString(indeks) + " "
+            stringRes += if (indeks == R.string.se) getString(indeks)
+            else getString(indeks) + " "
         }
-        return stringRes
+        binding.hasil.text = getString(R.string.hasil_x, stringRes.replaceFirstChar(Char::titlecase) )
     }
-
 }
