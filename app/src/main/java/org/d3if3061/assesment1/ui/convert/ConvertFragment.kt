@@ -2,6 +2,7 @@ package org.d3if3061.assesment1.ui.convert
 
 import android.os.Bundle
 import android.text.TextUtils
+import android.util.Log
 import android.view.*
 import androidx.fragment.app.Fragment
 import android.widget.Toast
@@ -9,12 +10,15 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import org.d3if3061.assesment1.R
 import org.d3if3061.assesment1.databinding.FragmentConvertBinding
+import org.d3if3061.assesment1.db.NumeraliaDb
 
 class ConvertFragment : Fragment() {
     private lateinit var binding: FragmentConvertBinding
 
     private val viewModel: ConvertViewModel by lazy {
-        ViewModelProvider(requireActivity())[ConvertViewModel::class.java]
+        val db = NumeraliaDb.getInstance(requireContext())
+        val factory = ConvertViewModelFactory(db.dao)
+        ViewModelProvider(this, factory)[ConvertViewModel::class.java]
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
@@ -46,6 +50,9 @@ class ConvertFragment : Fragment() {
         binding.submitButton.setOnClickListener{ convert() }
 
         viewModel.getReturninglist().observe(viewLifecycleOwner, { translateListtoString(it) })
+        viewModel.data.observe(viewLifecycleOwner, {
+            if (it == null) return@observe
+        })
     }
 
     private fun convert() {

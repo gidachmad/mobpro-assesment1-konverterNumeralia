@@ -39,6 +39,6 @@
         android:layout_marginTop="4dp"
         app:layout_constraintStart_toStartOf="@+id/tanggalTextView"
         app:layout_constraintTop_toBottomOf="@+id/tanggalTextView"
-        tools:text="BMI: 24,22 - IDEAL" />
+        tools:text="" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

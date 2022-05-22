@@ -3,11 +3,19 @@ package org.d3if3061.assesment1.ui.convert
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import org.d3if3061.assesment1.R
+import org.d3if3061.assesment1.db.NumeraliaDao
+import org.d3if3061.assesment1.db.NumeraliaEntity
 
-class ConvertViewModel: ViewModel() {
+class ConvertViewModel(private val db: NumeraliaDao): ViewModel() {
     private val list = mutableListOf<Int>()
     private var returningList = MutableLiveData<MutableList<Int>>()
+
+    val data = db.getLastNumeralia()
 
     fun convertNumeralia(bil1: Int) {
         when (bil1.toString().length) {
@@ -17,7 +25,29 @@ class ConvertViewModel: ViewModel() {
             4 -> convertRibuan(bil1)
             else -> convertBelasan(bil1)
         }
+
         returningList.value = list.toMutableList()
+
+        while (list.size != 7){
+            list.add(0)
+        }
+
+        var insertToDb = list.toIntArray()
+        viewModelScope.launch {
+            withContext(Dispatchers.IO){
+                val dataNumeralia = NumeraliaEntity(
+                    indeks1 = insertToDb[0],
+                    indeks2 = insertToDb[1],
+                    indeks3 = insertToDb[2],
+                    indeks4 = insertToDb[3],
+                    indeks5 = insertToDb[4],
+                    indeks6 = insertToDb[5],
+                    indeks7 = insertToDb[6]
+                )
+                db.insert(dataNumeralia)
+            }
+        }
+
         list.clear()
     }
 
