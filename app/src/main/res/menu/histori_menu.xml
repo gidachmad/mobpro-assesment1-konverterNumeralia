@@ -5,7 +5,7 @@
     <item
         android:id="@+id/menu_hapus"
         android:icon="@drawable/ic_baseline_delete_forever_24"
-        android:title="@string/hapus_histori"
+        android:title="@string/hapus_histori_all"
         app:showAsAction="ifRoom"
         />
 </menu>

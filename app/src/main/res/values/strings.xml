@@ -44,7 +44,14 @@
 
     <string name="tentang_aplikasi">Tentang Aplikasi</string>
     <string name="histori">Histori</string>
-    <string name="hapus_histori">Hapus Histori</string>
+    <string name="hapus_histori_all">Hapus Semua Histori</string>
+    <string name="hapus_histori">Hapus Item Histori</string>
+
     <string name="hasil_histori">%1$s</string>
+    <string name="konfirmasi_hapus_all">Yakin hapus semua?</string>
+    <string name="konfirmasi_hapus">Yakin hapus item ini?</string>
+
+    <string name="hapus">Hapus</string>
+    <string name="batal">Batal</string>
 
 </resources>

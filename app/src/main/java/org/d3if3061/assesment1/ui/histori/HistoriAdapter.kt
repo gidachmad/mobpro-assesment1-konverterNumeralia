@@ -15,6 +15,12 @@ import java.util.*
 
 class HistoriAdapter:
     ListAdapter<NumeraliaEntity, HistoriAdapter.ViewHolder>(DIFF_CALLBACK) {
+        lateinit var historiListener: HistoriListener
+
+        fun setListener(historiListener: HistoriListener){
+            this.historiListener = historiListener
+        }
+
         companion object {
             private val DIFF_CALLBACK =
                 object : DiffUtil.ItemCallback<NumeraliaEntity>(){
@@ -46,7 +52,8 @@ class HistoriAdapter:
             holder.bind(getItem(position))
         }
 
-        class ViewHolder(
+
+        inner class ViewHolder(
             private val binding: ItemHistoryBinding
         ) : RecyclerView.ViewHolder(binding.root){
             private val dateFormatter = SimpleDateFormat("dd MMMM yyyy", Locale("id", "ID"))
@@ -65,7 +72,16 @@ class HistoriAdapter:
 
                 val rectBg = AngkaTextView.background as GradientDrawable
                 rectBg.setColor(ContextCompat.getColor(root.context, colorRes))
+
+                deleteButton.setOnClickListener{
+                    historiListener.onItemClick(item, true)
+                }
+
             }
         }
 
+}
+
+interface HistoriListener {
+    fun onItemClick(numeralia: NumeraliaEntity, isClicked: Boolean)
 }
