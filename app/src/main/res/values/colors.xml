@@ -9,4 +9,8 @@
     <color name="white">#FFFFFFFF</color>
     <color name="blue_500">#2196F3</color>
     <color name="blue_700">#1976D2</color>
+    <color name="brown_500">#795548</color>
+    <color name="deep_purple_500">#673ab7</color>
+    <color name="green_500">#4caf50</color>
+    <color name="red_500">#f44336</color>
 </resources>

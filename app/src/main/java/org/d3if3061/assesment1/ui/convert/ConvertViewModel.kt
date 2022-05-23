@@ -1,5 +1,8 @@
 package org.d3if3061.assesment1.ui.convert
 
+import android.content.Context
+import android.os.Debug
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -13,11 +16,20 @@ import org.d3if3061.assesment1.db.NumeraliaEntity
 
 class ConvertViewModel(private val db: NumeraliaDao): ViewModel() {
     private val list = mutableListOf<Int>()
-    private var returningList = MutableLiveData<MutableList<Int>>()
+    private var stringResult = MutableLiveData<String>()
 
-    val data = db.getLastNumeralia()
+    val getStringRes: LiveData<String> get() = (stringResult)
 
-    fun convertNumeralia(bil1: Int) {
+    fun translateListtoString(list : MutableList<Int>, context: Context?) {
+        var stringRes = ""
+        for (indeks in list) {
+            if (indeks == R.string.se) stringRes += context?.getString(indeks)
+            else stringRes += context?.getString(indeks) + " "
+        }
+        stringResult.value = stringRes
+    }
+
+    fun convertNumeralia(bil1: Int, context: Context? ) {
         when (bil1.toString().length) {
             1 -> convertSatuan(bil1)
             2 -> convertPuluhan(bil1)
@@ -26,32 +38,19 @@ class ConvertViewModel(private val db: NumeraliaDao): ViewModel() {
             else -> convertBelasan(bil1)
         }
 
-        returningList.value = list.toMutableList()
-
-        while (list.size != 7){
-            list.add(0)
-        }
-
-        var insertToDb = list.toIntArray()
+        translateListtoString(list.toMutableList(), context)
+        val dataNumeralia = NumeraliaEntity(
+            bilangan = bil1,
+            numeralia = getStringRes.value.toString()
+        )
         viewModelScope.launch {
             withContext(Dispatchers.IO){
-                val dataNumeralia = NumeraliaEntity(
-                    indeks1 = insertToDb[0],
-                    indeks2 = insertToDb[1],
-                    indeks3 = insertToDb[2],
-                    indeks4 = insertToDb[3],
-                    indeks5 = insertToDb[4],
-                    indeks6 = insertToDb[5],
-                    indeks7 = insertToDb[6]
-                )
                 db.insert(dataNumeralia)
             }
         }
 
         list.clear()
     }
-
-    fun getReturninglist() : LiveData<MutableList<Int>> = returningList
 
     private fun convertSatuan(bil1: Int){
         when(bil1){

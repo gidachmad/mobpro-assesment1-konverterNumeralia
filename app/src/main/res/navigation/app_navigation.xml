@@ -19,7 +19,7 @@
     </fragment>
     <fragment
         android:id="@+id/historiFragment"
-        android:name="org.d3if3061.assesment1.ui.HistoriFragment"
+        android:name="org.d3if3061.assesment1.ui.histori.HistoriFragment"
         android:label="@string/histori"
         tools:layout="@layout/fragment_histori" />
     <fragment

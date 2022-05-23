@@ -49,10 +49,9 @@ class ConvertFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         binding.submitButton.setOnClickListener{ convert() }
 
-        viewModel.getReturninglist().observe(viewLifecycleOwner, { translateListtoString(it) })
-        viewModel.data.observe(viewLifecycleOwner, {
-            if (it == null) return@observe
-        })
+        viewModel.getStringRes.observe(viewLifecycleOwner) {
+            binding.hasil.text = getString(R.string.hasil_x, it.replaceFirstChar(Char::titlecase) )
+        }
     }
 
     private fun convert() {
@@ -65,16 +64,7 @@ class ConvertFragment : Fragment() {
             bil1.length > 4 -> Toast.makeText(context, R.string.invalid_bil2, Toast.LENGTH_LONG).show()
 
             // jika input sesuai
-            else -> viewModel.convertNumeralia(bil1.toInt())
+            else -> viewModel.convertNumeralia(bil1.toInt(), context)
         }
-    }
-
-    private fun translateListtoString(list : MutableList<Int>){
-        var stringRes = ""
-        for (indeks in list){
-            stringRes += if (indeks == R.string.se) getString(indeks)
-            else getString(indeks) + " "
-        }
-        binding.hasil.text = getString(R.string.hasil_x, stringRes.replaceFirstChar(Char::titlecase) )
     }
 }

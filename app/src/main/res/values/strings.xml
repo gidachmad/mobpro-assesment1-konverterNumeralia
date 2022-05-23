@@ -45,5 +45,6 @@
     <string name="tentang_aplikasi">Tentang Aplikasi</string>
     <string name="histori">Histori</string>
     <string name="hapus_histori">Hapus Histori</string>
+    <string name="hasil_histori">%1$s</string>
 
 </resources>

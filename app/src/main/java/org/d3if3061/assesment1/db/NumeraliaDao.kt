@@ -11,7 +11,5 @@ interface NumeraliaDao {
     fun insert(numeralia: NumeraliaEntity)
 
     @Query("SELECT * FROM numeralia ORDER BY id DESC ")
-    fun getLastNumeralia(): LiveData<List<NumeraliaEntity>>
-
-
+    fun getNumeralia(): LiveData<List<NumeraliaEntity>>
 }
