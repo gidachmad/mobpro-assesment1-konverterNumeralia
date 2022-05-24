@@ -6,6 +6,12 @@
         android:id="@+id/menu_hapus"
         android:icon="@drawable/ic_baseline_delete_forever_24"
         android:title="@string/hapus_histori_all"
-        app:showAsAction="ifRoom"
-        />
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/action_switch_layout"
+        android:title="@string/switch_layout"
+        android:icon="@drawable/ic_baseline_linear"
+        app:showAsAction="ifRoom"/>
+
 </menu>

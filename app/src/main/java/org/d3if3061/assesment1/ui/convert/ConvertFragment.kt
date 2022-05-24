@@ -2,7 +2,6 @@ package org.d3if3061.assesment1.ui.convert
 
 import android.os.Bundle
 import android.text.TextUtils
-import android.util.Log
 import android.view.*
 import androidx.fragment.app.Fragment
 import android.widget.Toast

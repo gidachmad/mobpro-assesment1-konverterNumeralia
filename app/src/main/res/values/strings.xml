@@ -54,4 +54,6 @@
     <string name="hapus">Hapus</string>
     <string name="batal">Batal</string>
 
+    <string name="switch_layout">Ubah layout</string>
+
 </resources>
