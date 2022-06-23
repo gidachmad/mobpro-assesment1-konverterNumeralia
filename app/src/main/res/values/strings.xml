@@ -56,4 +56,9 @@
 
     <string name="switch_layout">Ubah layout</string>
 
+    <string name="channel_name"> Updater </string>
+    <string name="channel_desc"> Update Notif untuk Konverter</string>
+    <string name="notif_title"> Terimakasih telah melakukan konversi!!</string>
+    <string name="notif_text">Anda bisa cek histori konversi anda sekarang dengan klik menu di bagian kanan atas!! </string>
+
 </resources>

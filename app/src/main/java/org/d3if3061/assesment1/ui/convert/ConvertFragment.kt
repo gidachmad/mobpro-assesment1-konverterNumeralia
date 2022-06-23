@@ -122,6 +122,7 @@ class ConvertFragment : Fragment() {
                         ?.let { GambarApi.getGambarUrl(it.gambar) })
                     .error(R.drawable.ic_baseline_broken_image_24)
                     .into(binding.gambar)
+                viewModel.scheduleUpdater(requireActivity().application)
             }
         }
     }
