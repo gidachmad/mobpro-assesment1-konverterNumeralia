@@ -7,18 +7,47 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.bumptech.glide.Glide
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import org.d3if3061.assesment1.R
+import org.d3if3061.assesment1.db.Gambar
 import org.d3if3061.assesment1.db.NumeraliaDao
 import org.d3if3061.assesment1.db.NumeraliaEntity
+import org.d3if3061.assesment1.network.ApiStatus
+import org.d3if3061.assesment1.network.GambarApi
+import org.d3if3061.assesment1.network.GambarStatus
 
 class ConvertViewModel(private val db: NumeraliaDao): ViewModel() {
     private val list = mutableListOf<Int>()
     private var stringResult = MutableLiveData<String>()
+    private var dataGambar = MutableLiveData<List<Gambar>>()
+    private val status = MutableLiveData<ApiStatus>()
+    private val gambarStatus = MutableLiveData<GambarStatus>()
 
     val getStringRes: LiveData<String> get() = (stringResult)
+    val getDataGambar: LiveData<List<Gambar>> get() = (dataGambar)
+    val getStatus: LiveData<ApiStatus> get() = (status)
+    val getGambarStatus: LiveData<GambarStatus> get() = (gambarStatus)
+
+    init {
+        retrieveData()
+    }
+
+    private fun retrieveData() {
+        viewModelScope.launch(Dispatchers.IO){
+            status.postValue(ApiStatus.LOADING)
+            gambarStatus.postValue(GambarStatus.WAITING)
+            try {
+                dataGambar.postValue(GambarApi.service.getGambar())
+                status.postValue(ApiStatus.SUCCESS)
+            }catch (e: Exception){
+                Log.d("gambar api", "retrieveData: ${e.message}" )
+                status.postValue(ApiStatus.FAILED)
+            }
+        }
+    }
 
     fun translateListtoString(list : MutableList<Int>, context: Context?) {
         var stringRes = ""
@@ -26,6 +55,7 @@ class ConvertViewModel(private val db: NumeraliaDao): ViewModel() {
             if (indeks == R.string.se) stringRes += context?.getString(indeks)
             else stringRes += context?.getString(indeks) + " "
         }
+        gambarStatus.postValue(GambarStatus.CONVERTED)
         stringResult.value = stringRes
     }
 

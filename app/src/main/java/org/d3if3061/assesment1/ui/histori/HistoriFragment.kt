@@ -95,7 +95,7 @@ class HistoriFragment : Fragment() {
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
 //        super.onCreateOptionsMenu(menu, inflater)
         inflater.inflate(R.menu.histori_menu, menu)
-        val layoutButton = menu?.findItem(R.id.action_switch_layout)
+        val layoutButton = menu.findItem(R.id.action_switch_layout)
         setIcon(layoutButton)
     }
 
